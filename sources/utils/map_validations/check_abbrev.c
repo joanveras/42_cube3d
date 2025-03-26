@@ -6,7 +6,7 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 18:06:07 by jveras            #+#    #+#             */
-/*   Updated: 2025/03/12 14:07:21 by jveras           ###   ########.fr       */
+/*   Updated: 2025/03/26 19:03:02 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	check_characthers(t_program *program, char *line, int i, char c1, cha
 			check_path(program, c1, c2, &line[i + 2]);
 			return (1);
 		}
-		error_message("Invalid direction abbreviation\n");
+		error_message(program, "Invalid direction abbreviation\n");
 	}
 	return (0);
 }

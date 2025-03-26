@@ -1,5 +1,5 @@
 
-NO ./assets/textures/bluestone.xpm
+NO assets/textures/bluestone.xpm
 SO ./assets/textures/colorstone.xpm
 WE ./assets/textures/greystone.xpm
 EA ./assets/textures/purplestone.xpm

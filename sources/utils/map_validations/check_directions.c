@@ -6,7 +6,7 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 18:15:23 by jveras            #+#    #+#             */
-/*   Updated: 2025/03/12 14:19:49 by jveras           ###   ########.fr       */
+/*   Updated: 2025/03/26 19:03:22 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	check_directions( t_program *program, int *i )
 			}
 
 			if (dir_counter < 4)
-				error_message("Missing Direction\nWrong order of information in the file\n");
+				error_message(program, "Missing Direction\nWrong order of information in the file\n");
 
 			break ;
 		}
@@ -44,7 +44,7 @@ void	check_directions( t_program *program, int *i )
 	}
 
 	if (!program->map.map[j])
-		error_message("Missing information in the file");
+		error_message(program, "Missing information in the file");
 
 	*i = j;
 

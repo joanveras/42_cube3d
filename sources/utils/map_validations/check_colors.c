@@ -6,7 +6,7 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 13:32:08 by jveras            #+#    #+#             */
-/*   Updated: 2025/03/06 20:31:06 by jveras           ###   ########.fr       */
+/*   Updated: 2025/03/26 19:09:27 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	set_rgb(int *r, int *g, int *b,
 		*b = ft_atoi(str);
 }
 
-static int	is_next_char_a_digit(const char *str)
+static int	is_next_char_a_digit(t_program *program, const char *str)
 {
 	int	i;
 
@@ -36,13 +36,13 @@ static int	is_next_char_a_digit(const char *str)
 		i++;
 
 	if (i == 0 || i > 3)
-		error_message(INVALID_FORMAT);
+		error_message(program, INVALID_FORMAT);
 
 	return (i);
 
 }
 
-static void	validate_rgb_format(char *line, int *ret)
+static void	validate_rgb_format(t_program *program, char *line, int *ret)
 {
 	int	i, j, k;
 
@@ -50,7 +50,7 @@ static void	validate_rgb_format(char *line, int *ret)
 
 	i = 0;
 	if (!line || line[i] == ',')
-		error_message(INVALID_FORMAT);
+		error_message(program, INVALID_FORMAT);
 
 	str = (char *)line;
 
@@ -65,7 +65,7 @@ static void	validate_rgb_format(char *line, int *ret)
 
 		str = str + j;
 
-		k = is_next_char_a_digit(str);
+		k = is_next_char_a_digit(program, str);
 
 		set_rgb(&ret[0], &ret[1], &ret[2], str, i);
 
@@ -84,7 +84,7 @@ static void	validate_rgb_format(char *line, int *ret)
 
 }
 
-int	*check_colors(char **map, int *i)
+int	*check_colors(t_program *program, char **map, int *i)
 {
 
 	int	j, k;
@@ -98,11 +98,11 @@ int	*check_colors(char **map, int *i)
 		k++;
 
 	if (map[j][k] != 'F' && map[j][k] != 'C')
-		error_message(INVALID_FORMAT);
+		error_message(program, INVALID_FORMAT);
 	else if (map[j][k + 1] != ' ')
-		error_message(INVALID_FORMAT);
+		error_message(program, INVALID_FORMAT);
 
-	validate_rgb_format(ft_strtrim(&map[j][k + 1], " \t\n"), ret);
+	validate_rgb_format(program, ft_strtrim(&map[j][k + 1], " \t\n"), ret);
 
 	(*i)++;
 
